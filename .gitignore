@@ -1,0 +1,13 @@
+data/proxies/*
+data/db/*
+/public/user/upload
+/vendor/
+/logs/*
+.idea/
+/.vscode/*
+!/logs/README.md
+composer.lock
+config.ini
+config.dev.ini
+.env
+sendgrid.env

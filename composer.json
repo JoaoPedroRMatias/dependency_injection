@@ -1,0 +1,20 @@
+{
+    "name": "user/tmp",
+    "autoload": {
+        "psr-4": {
+            "User\\Tmp\\": "src/",
+            "Service\\Example\\": "App/Service/",
+            "Repository\\": "App/Repository/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Joao Pedro",
+            "email": "joaopedrord2001@gmail.com"
+        }
+    ],
+    "require": {
+        "php-di/php-di": "^7.0",
+        "monolog/monolog": "^3.9"
+    }
+}
