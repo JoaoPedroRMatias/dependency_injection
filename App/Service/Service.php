@@ -1,5 +1,5 @@
 <?php
-namespace Service\Example;
+namespace Service;
 
 use DI\Attribute\Inject;
 use Repository\Repository;

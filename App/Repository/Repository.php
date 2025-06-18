@@ -1,13 +1,17 @@
 <?php
 namespace Repository;
 
+use User\User;
+
 final class Repository 
 {
     public function user(): object
     {
+        $user = new User();
+        $user->setName("joao");
+
         $user = (object) [
-            'Nome' => 'Joao',
-            'Idade' => 24
+            'Name' => $user->getName(),
         ];
 
         return $user;
