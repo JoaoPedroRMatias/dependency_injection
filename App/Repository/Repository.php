@@ -3,8 +3,13 @@ namespace Repository;
 
 final class Repository 
 {
-    public function something(): string
+    public function user(): object
     {
-        return 'TESTE DE INJEÇÃO';
+        $user = (object) [
+            'Nome' => 'Joao',
+            'Idade' => 24
+        ];
+
+        return $user;
     }
 }

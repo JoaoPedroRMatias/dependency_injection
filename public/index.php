@@ -13,6 +13,6 @@ $builder->useAttributes(true);
 $container = $builder->build();
 
 $service = $container->get(Service::class);
-$result = $service->getExempleLogger()->something();
+$result = $service->getExempleLogger()->user();
 
-print_r($result);
+print_r("Usuário: $result->Nome\nIdade: $result->Idade\n");
