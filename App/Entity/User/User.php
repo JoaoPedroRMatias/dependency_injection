@@ -13,7 +13,7 @@ class User
     private int $id;
 
     #[ORM\Column(type: 'string', length: 100, nullable: true)]
-    private ?string $name = null;
+    private ?string $name = "Joao";
 
     public function getId(): int
     {

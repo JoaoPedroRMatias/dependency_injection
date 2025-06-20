@@ -9,4 +9,10 @@ class UserController extends Controller
         $result = $this->service->getRepository()->getUser();
         return $result ;
     }
+
+    public function post($data)
+    {
+        $result = $this->service->getRepository()->postUser($data);
+        return $result;
+    }
 }

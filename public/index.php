@@ -1,8 +1,7 @@
 <?php
-declare(strict_types=1);
 namespace App;
 
-require __DIR__ . '/../vendor/autoload.php';
+require "config.php";
 
 use DI\ContainerBuilder;
 use Controller\User\UserController;
@@ -12,6 +11,11 @@ $builder->useAttributes(true);
 $container = $builder->build();
 
 $controller = $container->get(UserController::class);
-$result = $controller->get();
+$resultGet = $controller->get();
 
-print_r($result);
+$data = [
+    "name" => "Pedro",
+];
+$resultPost = $controller->post($data);
+
+print_r($resultGet);
