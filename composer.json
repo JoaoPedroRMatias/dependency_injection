@@ -4,7 +4,8 @@
         "psr-4": {
             "Service\\": "App/Service/",
             "Repository\\": "App/Repository/",
-            "User\\": "App/Entity/User/"
+            "User\\": "App/Entity/User/",
+            "Controller\\": "App/Controller/"
         }
     },
     "authors": [

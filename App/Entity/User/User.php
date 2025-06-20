@@ -1,5 +1,4 @@
 <?php
-
 namespace User;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -30,5 +29,12 @@ class User
     {
         $this->name = $name;
         return $this;
+    }
+
+    public function toArray()
+    {
+        return [
+            'name' => $this->name
+        ];
     }
 }

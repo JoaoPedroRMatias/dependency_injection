@@ -8,7 +8,7 @@ class Service {
     #[Inject]
     public Repository $repository;
 
-    public function getExempleLogger(): Repository
+    public function getRepository(): Repository
     {
         return $this->repository;
     }

@@ -5,15 +5,17 @@ use User\User;
 
 final class Repository 
 {
-    public function user(): object
+    public function user(): array
     {
-        $user = new User();
-        $user->setName("joao");
+        try {
+            $user = new User();
+            $user->setName("joao");
 
-        $user = (object) [
-            'Name' => $user->getName(),
-        ];
+            return $user->toArray();
 
-        return $user;
+        } catch (\Exception $exception) {
+            throw new \Exception($exception->getMessage());
+
+        }
     }
 }

@@ -5,14 +5,13 @@ namespace App;
 require __DIR__ . '/../vendor/autoload.php';
 
 use DI\ContainerBuilder;
-use Psr\Container\ContainerInterface;
-use Service\Service;
+use Controller\User\UserController;
 
 $builder = new ContainerBuilder();
 $builder->useAttributes(true);
 $container = $builder->build();
 
-$service = $container->get(Service::class);
-$result = $service->getExempleLogger()->user();
+$controller = $container->get(UserController::class);
+$result = $controller->get();
 
-print_r("Usuário: $result->Name\n");
+print_r($result);
