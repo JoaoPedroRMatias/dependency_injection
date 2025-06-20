@@ -5,7 +5,7 @@ use User\User;
 
 final class Repository 
 {
-    public function user(): array
+    public function getUser(): array
     {
         try {
             $user = new User();
