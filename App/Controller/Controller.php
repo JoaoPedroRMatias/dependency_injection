@@ -3,10 +3,12 @@
 namespace Controller;
 
 use DI\Attribute\Inject;
-use Service\Service;
+use Traits\JsonTraits;
 
 class Controller
 {
+    use JsonTraits;
+
     #[Inject]
-    public Service $service;
+    public \Service\Service $service;
 }

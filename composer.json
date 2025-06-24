@@ -1,11 +1,12 @@
 {
-    "name": "user/tmp",
+    "name": "user/api-php-minimo",
     "autoload": {
         "psr-4": {
             "Service\\": "App/Service/",
             "Repository\\": "App/Repository/",
             "User\\": "App/Entity/User/",
-            "Controller\\": "App/Controller/"
+            "Controller\\": "App/Controller/",
+            "Traits\\": "App/Traits/"
         }
     },
     "authors": [
@@ -15,9 +16,15 @@
         }
     ],
     "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.7",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1",
+        "guzzlehttp/psr7": "^2",
+        "laminas/laminas-diactoros": "^3.6",
         "php-di/php-di": "^7.0",
-        "monolog/monolog": "^3.9",
         "doctrine/dbal": "^3.0",
-        "doctrine/orm": "^3.4"
+        "doctrine/orm": "^3.4",
+        "php-di/slim-bridge": "^3.4"
     }
 }

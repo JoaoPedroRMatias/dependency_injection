@@ -7,8 +7,8 @@ use Repository\Repository;
 class Service {
     #[Inject]
     public Repository $repository;
-
-    public function getRepository(): Repository
+    
+    public function getRepository(): Repository 
     {
         return $this->repository;
     }

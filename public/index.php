@@ -1,21 +1,15 @@
 <?php
-namespace App;
+require __DIR__ . "/../vendor/autoload.php";
 
-require "config.php";
+use Slim\Factory\AppFactory;
 
-use DI\ContainerBuilder;
-use Controller\User\UserController;
-
-$builder = new ContainerBuilder();
+$builder = new \DI\ContainerBuilder();
 $builder->useAttributes(true);
 $container = $builder->build();
+$app = \DI\Bridge\Slim\Bridge::create(container: $container);
 
-$controller = $container->get(UserController::class);
-$resultGet = $controller->get();
+AppFactory::setContainer($container);
 
-$data = [
-    "name" => "Pedro",
-];
-$resultPost = $controller->post($data);
+require __DIR__ . '/../config/routes/system.php';
 
-print_r($resultGet);
+$app->run();
