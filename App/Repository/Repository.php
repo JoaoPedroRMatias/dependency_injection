@@ -5,7 +5,7 @@ use User\User;
 
 final class Repository 
 {
-    public function getObj(){
+    public function listUser(){
         $result = [
             "nome" => "joao",
         ];

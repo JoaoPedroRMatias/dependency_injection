@@ -8,8 +8,8 @@ class Service {
     #[Inject]
     public Repository $repository;
     
-    public function getRepository(): Repository 
+    public function listRepository() 
     {
-        return $this->repository;
+        return $this->repository->listUser();
     }
 }
