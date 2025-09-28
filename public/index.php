@@ -3,6 +3,9 @@ require __DIR__ . "/../vendor/autoload.php";
 
 use Slim\Factory\AppFactory;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../");
+$dotenv->load();
+
 $builder = new \DI\ContainerBuilder();
 $builder->useAttributes(true);
 $container = $builder->build();
