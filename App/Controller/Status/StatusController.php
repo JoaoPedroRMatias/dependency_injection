@@ -1,12 +1,12 @@
 <?php
-namespace Controller\User;
+namespace Controller\Status;
 
 use Controller\Controller;
 
-class UserController extends Controller
+class StatusController extends Controller
 {
     public function get($request, $response){        
-        $result = $this->service->listRepository();
+        $result = $this->statusService->getRepository()->status();
         
         return $this->success($response, $result);
 

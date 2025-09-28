@@ -1,15 +1,11 @@
 <?php
 namespace Repository;
 
-use User\User;
-
 final class Repository 
 {
-    public function listUser(){
-        $result = [
-            "nome" => "joao",
+    public function status(){        
+        return [
+            "status" => true,
         ];
-        
-        return $result;
     }
 }

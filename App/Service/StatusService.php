@@ -4,12 +4,13 @@ namespace Service;
 use DI\Attribute\Inject;
 use Repository\Repository;
 
-class Service {
+class StatusService 
+{
     #[Inject]
     public Repository $repository;
     
-    public function listRepository() 
+    public function getRepository() 
     {
-        return $this->repository->listUser();
+        return $this->repository;
     }
 }

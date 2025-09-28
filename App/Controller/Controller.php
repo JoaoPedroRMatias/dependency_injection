@@ -10,5 +10,5 @@ class Controller
     use JsonTraits;
 
     #[Inject]
-    public \Service\Service $service;
+    public \Service\StatusService $statusService;
 }
