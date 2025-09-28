@@ -11,3 +11,4 @@ config.ini
 config.dev.ini
 .env
 sendgrid.env
+docker-compose.yml
