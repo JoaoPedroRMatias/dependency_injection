@@ -3,28 +3,33 @@
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
+use Doctrine\ORM\EntityManagerInterface;
+use Psr\Container\ContainerInterface;
+use function DI\autowire;
 
-require __DIR__ . '/../vendor/autoload.php';
+return [
+    EntityManagerInterface::class => function (ContainerInterface $c) {
+        $config = ORMSetup::createAttributeMetadataConfiguration(
+            [__DIR__ . '/../App/Entity'],
+            true
+        );
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../");
-$dotenv->load();
+        $connectionParams = [
+            'dbname'   => $_ENV['DBNAME'],
+            'user'     => $_ENV['USERNAME'],
+            'password' => $_ENV['PASSWORD'],
+            'host'     => $_ENV['HOST'],
+            'driver'   => 'pdo_mysql',
+            'port'     => $_ENV['PORT'] ?? 3306,
+        ];
 
-$container->set(EntityManager::class, function() {
-    $config = ORMSetup::createAttributeMetadataConfiguration(
-        paths: [__DIR__ . '/../App/Entity'],
-        isDevMode: true
-    );
+        $connection = DriverManager::getConnection($connectionParams, $config);
 
-    $connectionParams = [
-        'dbname' => $_ENV['DBNAME'],
-        'user' => $_ENV['USERNAME'],
-        'password' => $_ENV['PASSWORD'],
-        'host' => $_ENV['HOST'],
-        'port' => $_ENV['PORT'] ?? 3306,
-        'driver' => 'pdo_mysql',
-    ];
+        return new EntityManager($connection, $config);
+    },
 
-    $connection = DriverManager::getConnection($connectionParams, $config);
-
-    return new EntityManager($connection, $config);
-});
+    Repository\Repository::class => autowire()->constructorParameter(
+        'em',
+        \DI\get(EntityManagerInterface::class)
+    ),
+];

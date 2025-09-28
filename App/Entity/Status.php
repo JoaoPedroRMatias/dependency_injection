@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Status extends EntityBase
 {
     #[ORM\Column(type: 'text')]
-    protected $status;
+    protected $texto;
 
     public function toArray()
     {
@@ -24,14 +24,14 @@ class Status extends EntityBase
      */
     public function getStatus()
     {
-        return $this->status;
+        return $this->texto;
     }
 
     /**
-     * @param mixed $status
+     * @param mixed $texto
      */
-    public function setStatus($status): void
+    public function setStatus($texto): void
     {
-        $this->status = $status;
+        $this->texto = $texto;
     }
 }
