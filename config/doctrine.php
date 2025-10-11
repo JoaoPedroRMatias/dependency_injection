@@ -3,33 +3,33 @@
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
-use Doctrine\ORM\EntityManagerInterface;
-use Psr\Container\ContainerInterface;
-use function DI\autowire;
 
 return [
-    EntityManagerInterface::class => function (ContainerInterface $c) {
+
+    \Doctrine\ORM\EntityManager::class => Di\factory(function ($host, $db, $user, $pass, $port) {
+
         $config = ORMSetup::createAttributeMetadataConfiguration(
-            [__DIR__ . '/../App/Entity'],
-            true
+            paths: [__DIR__ . '/../App/Entity'],
+            isDevMode: true,
         );
 
-        $connectionParams = [
-            'dbname'   => $_ENV['DBNAME'],
-            'user'     => $_ENV['USERNAME'],
-            'password' => $_ENV['PASSWORD'],
-            'host'     => $_ENV['HOST'],
-            'driver'   => 'pdo_mysql',
-            'port'     => $_ENV['PORT'] ?? 3306,
-        ];
-
-        $connection = DriverManager::getConnection($connectionParams, $config);
+        $connection = DriverManager::getConnection([
+            'driver' => 'pdo_mysql',
+            'driverOptions' => [1002 => 'SET NAMES utf8'],
+            'host' => $host,
+            'port' => $port,
+            'dbname' => $db,
+            'user' => $user,
+            'password' => $pass,
+            'charset' => 'utf8mb4',
+        ], $config);
 
         return new EntityManager($connection, $config);
-    },
+    })
+        ->parameter('host', DI\get('db.host'))
+        ->parameter('db', DI\get('db.database'))
+        ->parameter('user', DI\get('db.user'))
+        ->parameter('pass', DI\get('db.pass'))
+        ->parameter('port', DI\get('db.port'))
 
-    Repository\Repository::class => autowire()->constructorParameter(
-        'em',
-        \DI\get(EntityManagerInterface::class)
-    ),
 ];

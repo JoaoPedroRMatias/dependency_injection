@@ -1,7 +1,7 @@
 <?php
 namespace Repository;
 
-use Entity\Status;
+use App\Entity\Status;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityRepository;
 
@@ -15,7 +15,6 @@ final class Repository extends EntityRepository
 
             $this->getEntityManager()->persist($rejection);
             $this->getEntityManager()->flush();
-
             return $rejection->toArray();
 
         } catch (\Exception $exception) {

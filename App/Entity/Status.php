@@ -1,12 +1,12 @@
 <?php
 
-namespace Entity;
+namespace App\Entity;
 
-use Entity\EntityBase;
+use App\Entity\EntityBase;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'ts_status')]
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass:\Repository\Repository::class)]
 class Status extends EntityBase
 {
     #[ORM\Column(type: 'text')]
