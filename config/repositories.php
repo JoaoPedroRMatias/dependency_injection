@@ -1,10 +1,8 @@
 <?php
 
-use function DI\factory;
-
 return [
 
-    \Repository\Repository::class => DI\factory(function (\Doctrine\ORM\EntityManager $entityManager) {
-        return $entityManager->getRepository('App\Entity\Status');
+    \App\Repository\Movies\MoviesRepository::class => DI\factory(function (\Doctrine\ORM\EntityManager $entityManager) {
+        return $entityManager->getRepository('App\Entity\Movies\Movies');
     })
 ];

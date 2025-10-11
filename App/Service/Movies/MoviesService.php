@@ -1,13 +1,13 @@
 <?php
-namespace Service;
+namespace App\Service\Movies;
 
+use App\Repository\Movies\MoviesRepository;
 use DI\Attribute\Inject;
-use Repository\Repository;
 
-class StatusService 
+class MoviesService
 {
     #[Inject]
-    public Repository $repository;
+    public MoviesRepository $repository;
     
     public function getRepository() 
     {
